@@ -1,1 +1,101 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+typedef struct Compania{
+	char Fecha[15];
+	char Nombre[20];
+}Compania;
+typedef struct Empleado{
+	char Cedula[20];
+	char Nombres[50];
+	char Cargo[40];
+}Empleado;
+typedef struct Ingresos{
+	float SueldoNeto;
+	float HorasNocturnas;
+	float HorasSuplementarias;
+	float HorasExtraordinarias;
+	float Comisiones;
+	float FondoReserva;
+}Ingresos;
+typedef struct Descuentos{
+	float IESSPersonal;
+	float PrestamoEmpresa;
+	float PrestamoQuirografario;
+	float PrestamoHipotecario;
+	float ImpuestoRenta;
+	float Quincena;
+	float Anticipos;
+	float PrestamoIESS;
+}Descuentos;
+typedef struct Saldos{
+	float TotalIngresos;
+	float TotalDescuentos;
+	float TotalRecibe;
+}Saldos;
+typedef struct RoldePagos{
+	Compania c;
+	Empleado e;
+	Ingresos i;
+	Descuentos d;
+	Saldos s;
+}RoldePagos;
+
+int main(int argc, char *argv[]) {
+	struct RoldePagos rp;
+	float  TotalIngresos = 0, TotalDescuentos = 0, TotalRecibe = 0;
+	printf("\t\t\t\tDatos Compañia\n");
+	printf("Fecha:\t");
+	scanf("%s",&rp.c.Fecha);
+	printf("Nombre:\t");
+	scanf("%s",&rp.c.Nombre);
+	printf("\t\t\t\tDatos del Empleado\n");
+	printf("Cedula:");
+	scanf("%s",&rp.e.Cedula);
+	printf("Nombres:");
+	scanf("%s",&rp.e.Nombres);
+	printf("Cargo:");
+	scanf("%s",&rp.e.Cargo);
+	printf("\n************************************INGRESOS**********************************\n");
+	printf("Sueldo Neto:                                            ");
+	scanf("%f",&rp.i.SueldoNeto);
+	rp.i.HorasNocturnas = rp.i.SueldoNeto * 0;
+	printf("Horas Nocturnas:                                        %.2f\n",rp.i.HorasNocturnas);
+	rp.i.HorasSuplementarias =  * 2;
+	printf("Horas suplementarias:                                   %.2f\n",rp.i.HorasSuplementarias);
+	rp.i.HorasExtraordinarias = 10 * 1.5;
+	printf("Horas Extraordinarias:                                  %.2f\n",rp.i.HorasExtraordinarias);
+	rp.i.Comisiones = rp.i.SueldoNeto * 0;
+	printf("Comisiones:                                             %.2f\n",rp.i.Comisiones);
+	rp.i.FondoReserva = rp.i.SueldoNeto * 0.0833;
+	printf("Fondo de Reserva:                                       %.2f\n",rp.i.FondoReserva);
+	rp.s.TotalIngresos = (rp.i.SueldoNeto + rp.i.HorasNocturnas + rp.i.HorasSuplementarias + rp.i.HorasExtraordinarias + rp.i.Comisiones + rp.i.FondoReserva);
+	rp.s.TotalIngresos = rp.s.TotalIngresos;
+	printf("Total de Ingresos:                                      %.2f",rp.s.TotalIngresos);
+	printf("\n************************************DESCUENTOS********************************\n");
+	printf("DESCUENTOS\n");
+	rp.d.IESSPersonal = rp.i.SueldoNeto * 0.0945;
+	printf("IESS Personal:                                          %.2f\n",rp.d.IESSPersonal);
+	rp.d.PrestamoEmpresa = rp.i.SueldoNeto * 0;
+	printf("Prestamo Empresa:                                       %.2f\n",rp.d.PrestamoEmpresa);
+	rp.d.PrestamoQuirografario = rp.i.SueldoNeto * 0.03;
+	printf("Prestamo Quirografario:                                 %.2f\n",rp.d.PrestamoQuirografario);
+	rp.d.PrestamoHipotecario = rp.i.SueldoNeto * 0;
+	printf("Prestamo Hipotecario:                                   %.2f\n",rp.d.PrestamoHipotecario);
+	rp.d.ImpuestoRenta = rp.i.SueldoNeto * 0;
+	printf("Impuesto a la renta:                                    %.2f\n",rp.d.ImpuestoRenta);
+	rp.d.Quincena = rp.i.SueldoNeto * 0;
+	printf("Quincena:                                               %.2f\n",rp.d.Quincena);
+	rp.d.PrestamoIESS = rp.i.SueldoNeto * 0;
+	printf("Prestamo IESS:                                          %.2f\n",rp.d.PrestamoIESS);
+	rp.s.TotalDescuentos = (rp.d.IESSPersonal + rp.d.PrestamoEmpresa + rp.d.PrestamoQuirografario + rp.d.PrestamoHipotecario + rp.d.ImpuestoRenta + rp.d.Quincena + rp.d.PrestamoIESS);
+	rp.s.TotalDescuentos = rp.s.TotalDescuentos;
+	printf("Total de Descuento:                                     %.2f\n",rp.s.TotalDescuentos);
+	rp.s.TotalRecibe = rp.s.TotalIngresos - rp.s.TotalDescuentos;
+	rp.s.TotalRecibe = 	rp.s.TotalRecibe;
+	printf("Total que Recibe.                                       %.2f\n",rp.s.TotalRecibe);
+	printf("\n*****************************************************************************\n");
+	printf("Recibe conforme:___________________\t");
+
+	return 0;
+}
