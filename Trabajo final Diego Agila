@@ -12,3 +12,5 @@ printf("\n******DESCUENTOS****\n");
 	rp.d.ImpuestoRenta = rp.i.SueldoNeto * 0;
 	printf("Impuesto a la renta: %.2f\n",rp.d.ImpuestoRenta);
 	rp.d.Quincena = rp.i.SueldoNeto * 0;
+	
+	
